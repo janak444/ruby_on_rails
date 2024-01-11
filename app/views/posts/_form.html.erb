@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <%= form_with(model: post, html: { class: "form" }) do |form| %>
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:title) %>
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: 'form-control' %>
+      <% if invalid %>
+        <p style="color:red">
+          <%= post.errors.full_messages_for(:title).join(", ") %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:description) %>
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: 'form-control', rows: 5 %>
+      <% if invalid %>
+        <p style="color:red">
+          <%= post.errors.full_messages_for(:description).join(", ") %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <% invalid = post.errors.include?(:tags) %>
+      <%= form.label :tags, class: "form-label" %>
+      <%= form.text_field :tags, class: 'form-control' %>
+      <% if invalid %>
+        <p style="color:red">
+          <%= post.errors.full_messages_for(:tags).join(", ") %>
+        </p>
+      <% end %>
+      <%= form.file_field :images, multiple: true, class: 'img-fluid mx-auto d-block' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit "Save", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
