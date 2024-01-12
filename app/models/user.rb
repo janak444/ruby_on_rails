@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
          has_one_attached :avatar
 
+         has_many :likes
+
          before_create :randomize_id
          private
          def randomize_id
