@@ -9,9 +9,9 @@
   <% post.images.each do |image| %>
     <%= image_tag(image, style: "max-width: 50%; height: auto; object-fit: contain;") %>
   <% end %>
-  <% like = current_user.likes.find_by(post: post)%>
-  <% if like.nil?%>
-   <%= button_to "like", likes_path, params: { like: { "post_id" => post.id } }, method: :post %>
+  <% like = current_user.likes.find_by(post: post) if current_user%>
+  <% if like.nil? %>
+      <%=button_to "like", likes_path, params: { like: { "post_id" => post.id } }, method: :post%>
    <% else %>
    <%= button_to "unlike", like_path(like), method: :delete %>
    <% end %>

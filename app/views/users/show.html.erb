@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">Profile Details</h5>
        <p class="nav-item">
-          <% if current_user.avatar.attached? %>
+          <% if current_user && current_user.avatar.attached? %>
              <%= image_tag current_user.avatar, style:"width: 50px; height: 50px;" %>
           <% end %>
         </p>

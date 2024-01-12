@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
          <li class="nav-item">
-          <% if current_user.avatar.attached? %>
+          <% if current_user && current_user.avatar.attached? %>
              <%= image_tag current_user.avatar, style:"width: 50px; height: 50px;" %>
           <% end %>
         </li>
