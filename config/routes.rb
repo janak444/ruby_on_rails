@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
   resources :comments
 
   devise_scope :user do
@@ -8,7 +7,12 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
 
-  devise_for :users
+  devise_for :users, controllers:{
+    registrations: 'users/registrations'
+  }
+
+  resources :users,only: [:show]
+
   get 'home/about'
   get 'posts/myPosts'
   resources :posts
