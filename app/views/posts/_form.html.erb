@@ -12,6 +12,10 @@
     </div>
 
     <div class="mb-3">
+      <%= form.text_field :user_id, type: "hidden", value: current_user.id %>
+    </div>
+
+    <div class="mb-3">
       <% invalid = post.errors.include?(:description) %>
       <%= form.label :description, class: "form-label" %>
       <%= form.text_area :description, class: 'form-control', rows: 5 %>

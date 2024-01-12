@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Your Posts</h1>
+
+  <div id="posts" class="text-center">
+    <% @posts.each do |post| %>
+      <% if post.user.id == current_user.id %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <%= render post %>
+            <p>
+              <%= link_to "Show this post", post, class: "btn btn-secondary" %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= link_to "New post", new_post_path, class: "btn btn-primary" %>
+</div>
